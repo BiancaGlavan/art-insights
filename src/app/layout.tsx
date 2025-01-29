@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navigation from '@/components/Navigation';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space',
 });
 
 export const metadata: Metadata = {
@@ -24,21 +24,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body>
-        <div className="min-h-screen relative">
-          {/* Background Image with Overlay */}
-          <div className="fixed inset-0 -z-10">
-            <img
-              src="/img/books-background.jpg"
-              alt="Books Background"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-neutral-100/75 backdrop-blur-[2px]"></div>
-          </div>
-
+        <div className="min-h-screen relative bg-gradient-to-br from-neutral-50 via-white to-neutral-100">
           <Navigation />
-          {children}
+          <div className="pt-28">
+            {children}
+          </div>
         </div>
       </body>
     </html>
